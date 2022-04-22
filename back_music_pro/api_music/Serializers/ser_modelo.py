@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from ..models import Modelo
 from .ser_marca import MarcaSerializer
+from rest_flex_fields import FlexFieldsModelSerializer
 
 
 
-class ModeloSerializer(serializers.ModelSerializer):
+class ModeloSerializer(FlexFieldsModelSerializer):
 
-    marca = serializers.PrimaryKeyRelatedField(read_only=True)
+    
 
     class Meta:
         model = Modelo

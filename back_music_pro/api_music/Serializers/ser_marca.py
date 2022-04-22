@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from ..models import Marca
+from rest_flex_fields import FlexFieldsModelSerializer
 
 
-
-class MarcaSerializer(serializers.ModelSerializer):
+class MarcaSerializer(FlexFieldsModelSerializer):
 
     class Meta:
         model = Marca
