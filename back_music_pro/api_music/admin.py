@@ -4,3 +4,5 @@ from django.contrib import admin
 from api_music import models
 
 admin.site.register(models.UserProfile)
+admin.site.register(models.Marca)
+admin.site.register(models.Modelo)

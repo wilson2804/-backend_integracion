@@ -38,4 +38,31 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
+class Marca(models.Model):
+    _id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=500, null=False, blank=False)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+
+class Modelo(models.Model):
+    _id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=500, null=False, blank=False)
+    marca = models.ForeignKey(Marca, on_delete=models.CASCADE, null=False, blank=False)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+
+class Categoria(models.Model):
+    _id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=500, null=False, blank=False)
+    parent = models.ForeignKey(
+        "self",
+        null=True,
+        blank=True,
+        related_name="sub_categoria",
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+
    
