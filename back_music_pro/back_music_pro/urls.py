@@ -20,6 +20,9 @@ from django.conf.urls import url
 from api_music.ViewSets.vw_UserProfile import UserProfileViewSet, CustomAuthToken
 from api_music.ViewSets.vw_marca import MarcaViewSet
 from api_music.ViewSets.vw_modelo import ModeloViewSet
+from api_music.ViewSets.vw_categoria import CategoriaViewSet
+from api_music.ViewSets.vw_producto import ProductoViewSet
+
 
 app_name= 'back_music_pro'
 
@@ -27,6 +30,8 @@ rt = routers.SimpleRouter(trailing_slash=True)
 rt.register("usuarios",UserProfileViewSet , basename="usuarios")
 rt.register("marcas",MarcaViewSet , basename="marcas")
 rt.register("modelos",ModeloViewSet , basename="modelos")
+rt.register("categorias",CategoriaViewSet , basename="categorias")
+rt.register("productos",ProductoViewSet , basename="productos")
 
 
 

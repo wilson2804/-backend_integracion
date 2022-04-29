@@ -1,4 +1,5 @@
 import email
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import  PermissionsMixin
@@ -39,20 +40,20 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['name']
 
 class Marca(models.Model):
-    _id = models.BigAutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=500, null=False, blank=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
 
 class Modelo(models.Model):
-    _id = models.BigAutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=500, null=False, blank=False)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE, null=False, blank=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
 
 class Categoria(models.Model):
-    _id = models.BigAutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=500, null=False, blank=False)
     parent = models.ForeignKey(
         "self",
@@ -65,4 +66,21 @@ class Categoria(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
 
-   
+class Producto(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    codigo = models.CharField(max_length=500, unique=True)
+    modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE, null=False, blank=False)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=False, blank=False)
+    precio = models.IntegerField()
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+
+class imagen(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    url = models.CharField(max_length=500)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, null=False, blank=False)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+
+
+
