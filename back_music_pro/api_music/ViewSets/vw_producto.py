@@ -1,10 +1,11 @@
 from ..models import Producto
 from ..Serializers.ser_producto import ProductoSerializer
 from rest_framework import viewsets
+from api_music.authentication_mixins import Authentication
 
 
 
-class ProductoViewSet(viewsets.ModelViewSet):
+class ProductoViewSet(Authentication, viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 

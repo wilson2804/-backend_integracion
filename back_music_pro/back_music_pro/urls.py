@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from django.conf.urls import url
-from api_music.ViewSets.vw_UserProfile import UserProfileViewSet, CustomAuthToken
+from api_music.ViewSets.vw_UserProfile import UserProfileViewSet
+from api_music.ViewSets.login import Login, Logout
 from api_music.ViewSets.vw_marca import MarcaViewSet
 from api_music.ViewSets.vw_modelo import ModeloViewSet
 from api_music.ViewSets.vw_categoria import CategoriaViewSet
@@ -38,7 +39,8 @@ rt.register("productos",ProductoViewSet , basename="productos")
 urlpatterns = [
     url(r"", include(rt.urls)),
     path('admin/', admin.site.urls),
-    path(r"obtener-token/", CustomAuthToken.as_view(), name="obtener-token")
+    path(r"login", Login.as_view(), name="login"),
+    path(r"logout", Logout.as_view(), name="logout")
 
     
 ]
