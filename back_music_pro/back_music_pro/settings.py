@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'api_arq',
         'USER': 'postgres',
         'PASSWORD': 'catalina08',
-        'PORT': '5432',
+        'PORT': '5433',
         
     }
 }
