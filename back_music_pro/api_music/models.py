@@ -78,7 +78,7 @@ class Producto(models.Model):
 class imagen(models.Model):
     id = models.BigAutoField(primary_key=True)
     url = models.CharField(max_length=500)
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, null=False, blank=False)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, null=False, blank=False,related_name="imagen")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
 

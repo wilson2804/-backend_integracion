@@ -5,7 +5,7 @@ from api_music.authentication_mixins import Authentication
 
 
 
-class ProductoViewSet(Authentication, viewsets.ModelViewSet):
+class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
