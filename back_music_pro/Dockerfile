@@ -14,5 +14,5 @@ COPY . /code/
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 
-EXPOSE 3370
-CMD ["python", "manage.py", "runserver", "0.0.0.0:3370"]
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver"]
