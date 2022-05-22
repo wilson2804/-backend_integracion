@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@7m&3!*308p53+cl8-$v*p^fpp&87y!05$ym_nnvei@s&#kwuc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.66.183.242']
 
 
 # Application definition
@@ -84,12 +84,11 @@ WSGI_APPLICATION = 'back_music_pro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql",
-        'HOST': 'localhost',
+        'HOST': '34.66.183.242',
         'NAME': 'api_arq',
         'USER': 'postgres',
         'PASSWORD': 'catalina08',
-        'PORT': '5432',
-        
+        'PORT': '5432',    
     }
 }
 
