@@ -1,14 +1,15 @@
-FROM python:3.10
+FROM python:3
+ENV PYTHONUNBUFFERED=1
+RUN mkdir /code
+WORKDIR /code
 
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-		postgresql-client \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+RUN pip install --upgrade pip
+RUN pip install psycopg2-binary
 
-WORKDIR /usr/src/app
-COPY requirements.txt ./
+COPY requirements.txt /code/
 RUN pip install -r requirements.txt
-COPY . .
+COPY . /code/
 
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+EXPOSE 3370
+CMD ["python", "manage.py", "runserver", "0.0.0.0:3370"]
